@@ -1,14 +1,20 @@
 package search;
-public class MorrisPratt {
+
+public class KnuthMorrisPratt {
+
     public static int[] preMP(String x) {
         int[] mpNext = new int[x.length()+1];
         int i = 0;
         int j = mpNext[0] = -1;
         while (i < x.length()) {
-            while (j > -1 && (x.charAt(i) != x.charAt(j))) {
+            while (j > -1 && (x.charAt(i) != x.charAt(j)))
                 j = mpNext[j];
-            }
-            mpNext[++i] = ++j;
+            i++;
+            j++;
+            if(i<x.length()&& x.charAt(i)==x.charAt(j))
+                mpNext[i]=mpNext[j];
+            else
+                mpNext[i]=j;
         }
         return mpNext;
     }
@@ -22,18 +28,17 @@ public class MorrisPratt {
         while (j < yLength) {
             while (i >-1 && x.charAt(i)!=y.charAt(j))
                 i=mpNext[i];
-            System.out.println(i);
             i++;j++;
             if(i==xLength){
+                System.out.println(j-i);
                 i=mpNext[i];
             }
 
         }
     }
     public static void main(String[] args) {
-        String x = "aaannaa";
-
-        String y = "basdaaaannaaa";
+        String x = "a";
+        String y = "basdccaaaaa";
         search(x, y);
     }
 }
