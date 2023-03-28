@@ -1,4 +1,4 @@
-package search;
+package search.lefttoright;
 public class MorrisPratt {
     public static int[] preMP(String x) {
         int[] mpNext = new int[x.length()+1];

@@ -1,4 +1,4 @@
-package search;
+package search.lefttoright;
 
 public class KnuthMorrisPratt {
 
